@@ -33,7 +33,7 @@ public class ViewPeersActivity extends Activity implements AdapterView.OnItemCli
 
         peers = getIntent().getParcelableArrayListExtra(PEERS_KEY);
        //test
-        Log.d(TAG, "peers are:" + peers.toString());
+        Log.d(TAG, "peers in viewpeersactivity are:" + peers);
 //test
         // TODO display the list of peers, set this activity as onClick listener
          peerList = (ListView) findViewById(R.id.peer_list);

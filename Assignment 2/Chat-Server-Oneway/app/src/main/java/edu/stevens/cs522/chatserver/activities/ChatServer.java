@@ -19,6 +19,7 @@ import java.util.Date;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcel;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.Menu;
@@ -57,10 +58,14 @@ public class ChatServer extends Activity implements OnClickListener {
      */
 
     //test
-     ArrayList<String> messages;
+//     ArrayList<String> messages;
+//    private ArrayAdapter<Peer> messageAdapter;
+//    private ListView messageList;
+    //test
+
+    ArrayList<String> messages;
     private ArrayAdapter<String> messageAdapter;
     private ListView messageList;
-    //test
 
 
     /*
@@ -111,7 +116,8 @@ public class ChatServer extends Activity implements OnClickListener {
        messageList = (ListView) findViewById(R.id.message_list);
 
        messageAdapter = new ArrayAdapter<String>(this,R.layout.message,messages);
-       messageList.setAdapter(messageAdapter);
+
+        messageList.setAdapter(messageAdapter);
        next=(Button) findViewById(R.id.next);
        next.setOnClickListener(this);
 
@@ -146,21 +152,22 @@ public class ChatServer extends Activity implements OnClickListener {
 
             Log.d(TAG, "Received from " + name + ": " + message);
 
+            Log.d(TAG, "It works till here");
 
-//            Peer peer = new Peer();
-//            peer.name = name;
-//            peer.timestamp = new Date();
-//            peer.address = sourceIPAddress;
 
-            //peers.addPeer(new Peer(name, DateUtils.now(),sourceIPAddress,6666));
-            Log.d(TAG, "Peers are " + peers);
-
+            Peer peer = new Peer();
+            peer.name = name;
+            peer.timestamp = new Date();
+            peer.address = sourceIPAddress;
+            addPeer(peer);
 
             /*
              * TODO: Add message with sender to the display.
              */
            // peers=addPeer(receivePacket);
             messages.add(name + ":" + message);
+//            peers.add(name + ":" + message);
+//            addPeer(peer);
             messageAdapter.notifyDataSetChanged();
 
             /*
@@ -207,7 +214,7 @@ public class ChatServer extends Activity implements OnClickListener {
             }
         }
         peers.add(peer);
-        Log.d(TAG, "Received peer : " + peer.name + peer.address + peer.timestamp);
+        Log.d(TAG, "Received peer : " + peers.toString());
     }
 
     @Override

@@ -35,7 +35,7 @@ public class Peer implements Parcelable {
     @Override
     public void writeToParcel(Parcel out, int flags) {
         // TODO
-        out.writeLong(this.id);
+        //out.writeLong(this.id);
         out.writeString(this.name);
         DateUtils.writeDate(out,this.timestamp);
         InetAddressUtils.writeAddress(out,this.address);
@@ -46,7 +46,7 @@ public class Peer implements Parcelable {
 
     public Peer(Parcel in) {
         // TODO
-        this.id = in.readLong();
+        //this.id = in.readLong();
         this.name= in.readString();
         this.timestamp = DateUtils.readDate(in);
         this.address = InetAddressUtils.readAddress(in);
